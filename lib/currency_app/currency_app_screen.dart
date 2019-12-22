@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground2/widgets/home_screen/currency_app/currency_tile.dart';
+
+import 'currency_tile.dart';
 
 const double kSizedBoxHeight = 30;
 

@@ -24,13 +24,7 @@ class CurrencyTile extends StatelessWidget {
             child: Icon(Icons.map),
           ),
           Container(
-            child: Row(children: <Widget>[
-              buildContainer(from, to),
-
-              // SizedBox(
-              //   width: kSizedBoxWidth,
-              // ),
-            ]),
+            child: buildContainer(from, to),
           ),
         ],
       ),

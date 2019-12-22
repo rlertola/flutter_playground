@@ -23,8 +23,6 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               HomeRow(),
-              HomeRow(),
-              HomeRow(),
             ],
           ),
         ),
