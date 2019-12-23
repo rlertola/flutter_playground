@@ -22,6 +22,6 @@ List<Color> colors = [
 ];
 
 String desc =
-    "Get maximum support, comfort and a refreshed look with these adidas energy cloud shoes for men comes wit a classic style."
+    "Get maximum support, comfort and a refreshed look with these adidas energy cloud shoes for men comes wit a classic style.\n"
     "Boost your running comfort to the next level with this supportive shoe Synthetic upper with FITFRAME midfoot cage for a locked-down fit and feel"
     "Lace-up closure Cushioned footbed CLOUDFOAM midsole provides responsive padding Durable ADIWEAR™ rubber sole.";
