@@ -31,7 +31,7 @@ class _ProductScreenBottomPartState extends State<ProductScreenBottomPart> {
     });
   }
 
-  List<Widget> colorSelector() {
+  List<Widget> _colorSelector() {
     List<Widget> colorItemList = List();
 
     for (var i = 0; i < colors.length; i++) {
@@ -42,11 +42,13 @@ class _ProductScreenBottomPartState extends State<ProductScreenBottomPart> {
         });
       }));
     }
+    return colorItemList;
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white10,
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,30 +153,215 @@ class _ProductScreenBottomPartState extends State<ProductScreenBottomPart> {
                 Container(
                   height: screenAwareSize(38, context),
                   child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: sizeNumlist.map((item) {
+                      int index = sizeNumlist.indexOf(item);
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            currentSizeIndex = index;
+                          });
+                        },
+                        child:
+                            sizeItem(item, index == currentSizeIndex, context),
+                      );
+                    }).toList(),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Container(
+                    width: screenAwareSize(100, context),
+                    height: screenAwareSize(30, context),
+                    decoration: BoxDecoration(
+                      color: Color(0xFF525663),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: sizeNumlist.map((item) {
-                        int index = sizeNumlist.indexOf(item);
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              currentSizeIndex = index;
-                            });
-                          },
-                          child: sizeItem(
-                              item, index == currentSizeIndex, context),
-                        );
-                      }).toList()),
+                      children: <Widget>[
+                        Flexible(
+                          flex: 3,
+                          child: GestureDetector(
+                            onTap: _decrease,
+                            child: Container(
+                              height: double.infinity,
+                              child: Center(
+                                child: Center(
+                                  child: Text(
+                                    '-',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      // fontFamily:
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        divider(),
+                        Flexible(
+                          flex: 3,
+                          child: Container(
+                            height: double.infinity,
+                            child: Center(
+                              child: Text(
+                                _counter.toString(),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  // fontFamily:
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        divider(),
+                        Flexible(
+                          flex: 3,
+                          child: GestureDetector(
+                            onTap: _increase,
+                            child: Container(
+                              height: double.infinity,
+                              child: Center(
+                                child: Text(
+                                  '+',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    // fontFamily:
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 )
               ],
             ),
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+              left: screenAwareSize(18, context),
+            ),
+            child: Text(
+              'Select Color',
+              style: TextStyle(
+                color: Color(0xFF949598),
+                fontSize: screenAwareSize(10, context),
+                // fontFamily:
+              ),
+            ),
+          ),
+          SizedBox(
+            height: screenAwareSize(8, context),
+          ),
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.only(left: screenAwareSize(20, context)),
+            height: screenAwareSize(34, context),
+            child: Row(
+              children: _colorSelector(),
+            ),
+          ),
+          SizedBox(
+            height: screenAwareSize(8, context),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: screenAwareSize(20, context)),
+            child: Text(
+              'Price',
+              style: TextStyle(
+                color: Color(0xFF949598),
+                // fontFamily:
+              ),
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            height: screenAwareSize(100, context),
+            child: Stack(
+              alignment: Alignment.topCenter,
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(
+                    left: screenAwareSize(22, context),
+                    right: screenAwareSize(22, context),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding:
+                            EdgeInsets.only(left: screenAwareSize(22, context)),
+                        child: Row(
+                          children: <Widget>[
+                            Text(
+                              '\$',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: screenAwareSize(26, context),
+                                // fontFamily:
+                              ),
+                            ),
+                            SizedBox(width: screenAwareSize(2.0, context)),
+                            Text(
+                              "80",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: screenAwareSize(30.0, context),
+                                // fontFamily: "Montserrat-Medium",
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: screenAwareSize(10.0, context),
+                      ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: MaterialButton(
+                          color: Color(0xFFFB382F),
+                          padding: EdgeInsets.symmetric(
+                            vertical: screenAwareSize(14.0, context),
+                          ),
+                          onPressed: () {},
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text("Add To Cart",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: screenAwareSize(15.0, context))),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                // Positioned(
+                //   right: -40.0,
+                //   bottom: -60.0,
+                //   child: Icon(Icons.shopping_cart),
+
+                //   // Image.asset("assets/cart.png",
+                //   //     width: screenAwareSize(190.0, context),
+                //   //     height: screenAwareSize(155.0, context),
+                //   //     fit: BoxFit.cover),
+                // ),
+              ],
+            ),
           )
-          //
-          //
-          // LEFT OFF HERE - LINE 268 of GH
-          //
-          //
-          //
-          //
         ],
       ),
     );
@@ -183,7 +370,7 @@ class _ProductScreenBottomPartState extends State<ProductScreenBottomPart> {
 
 Widget sizeItem(String size, bool isSelected, BuildContext context) {
   return Padding(
-    padding: EdgeInsets.only(left: 12),
+    padding: EdgeInsets.only(left: 6),
     child: Container(
       width: screenAwareSize(30, context),
       height: screenAwareSize(30, context),
@@ -264,4 +451,14 @@ class MClipper extends CustomClipper<Path> {
   bool shouldReclip(CustomClipper<Path> oldClipper) {
     return true;
   }
+}
+
+Widget divider() {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+    child: Container(
+      width: .8,
+      color: Colors.black,
+    ),
+  );
 }

@@ -5,8 +5,9 @@ class ProductScreenTopPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // color: Colors.white10,
       width: double.infinity,
-      height: screenAwareSize(245, context),
+      height: screenAwareSize(230, context),
       child: Stack(
         children: <Widget>[
           Container(
