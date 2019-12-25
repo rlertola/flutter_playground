@@ -12,67 +12,157 @@ class CurrencyTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 100,
-      margin: EdgeInsets.symmetric(horizontal: 30),
+
+      // margin: EdgeInsets.symmetric(horizontal: 30),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: Colors.white,
+        color: Colors.white54,
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          CircleAvatar(
-            child: Icon(Icons.map),
-          ),
-          Container(
-            child: buildContainer(from, to),
-          ),
-        ],
-      ),
+      child: buildContainer(from, to, context),
     );
   }
 
-  Container buildContainer(from, to) {
-    return Container(
-      // color: Colors.grey,
-      child: Row(
-        children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text('From',
-                  style: TextStyle(fontSize: 18, color: Color(0xFF7B849B))),
-              Text(
-                from,
-                style: TextStyle(fontSize: 22, color: Colors.black),
-              ),
-            ],
+  buildContainer(from, to, context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Flexible(
+          flex: 2,
+          fit: FlexFit.tight,
+          child: Container(
+            child: CircleAvatar(
+              child: Icon(Icons.map),
+            ),
           ),
-          SizedBox(
-            width: kSizedBoxWidth,
+        ),
+        Flexible(
+          flex: 2,
+          fit: FlexFit.tight,
+          child: Container(
+            alignment: Alignment.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  'From',
+                  style: TextStyle(
+                    color: Color(0xFFd7dcea),
+                    fontSize: 18,
+                  ),
+                ),
+                Text(
+                  from,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
           ),
-          VerticalDivider(
-            width: 0,
-            thickness: 1,
-            color: Color(0xFFAEBEDB),
+        ),
+        SizedBox(
+          width: 10,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 18,
+            // horizontal: 14,
           ),
-          SizedBox(
-            width: kSizedBoxWidth,
+          child: VerticalDivider(
+            width: 4,
+            color: Color(0xFFd7dcea),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text('To',
-                  style: TextStyle(fontSize: 18, color: Color(0xFF7B849B))),
-              Text(
-                to,
-                style: TextStyle(fontSize: 22, color: Colors.black),
-              ),
-            ],
+        ),
+        SizedBox(
+          width: 30,
+        ),
+        Flexible(
+          flex: 3,
+          fit: FlexFit.tight,
+          child: Container(
+            alignment: Alignment.centerLeft,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  'To',
+                  style: TextStyle(
+                    color: Color(0xFFd7dcea),
+                    fontSize: 18,
+                  ),
+                ),
+                Text(
+                  to,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
+
+//   Container buildContainer(from, to) {
+//     return Container(
+//       width: 275,
+//       child: Row(
+//         children: <Widget>[
+//           Container(
+//             color: Colors.black12,
+//             width: 120,
+//             child: Column(
+//               mainAxisAlignment: MainAxisAlignment.center,
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: <Widget>[
+//                 Text('From',
+//                     style: TextStyle(fontSize: 18, color: Color(0xFF7B849B))),
+//                 Text(
+//                   from,
+//                   style: TextStyle(fontSize: 20, color: Colors.black),
+//                 ),
+//               ],
+//             ),
+//           ),
+//           SizedBox(
+//             width: kSizedBoxWidth,
+//           ),
+//           Padding(
+//             padding: const EdgeInsets.symmetric(vertical: 16),
+//             child: VerticalDivider(
+//               width: 0,
+//               thickness: 1,
+//               color: Color(0xFFAEBEDB),
+//             ),
+//           ),
+//           SizedBox(
+//             width: kSizedBoxWidth,
+//           ),
+//           Container(
+//             color: Colors.black12,
+//             width: 120,
+//             child: Column(
+//               mainAxisAlignment: MainAxisAlignment.center,
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: <Widget>[
+//                 Text('To',
+//                     style: TextStyle(fontSize: 18, color: Color(0xFF7B849B))),
+//                 Text(
+//                   to,
+//                   style: TextStyle(fontSize: 20, color: Colors.black),
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
