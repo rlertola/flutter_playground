@@ -20,6 +20,7 @@ class CurrencyAppScreen extends StatelessWidget {
           style: TextStyle(
             color: Colors.black,
             fontSize: 30,
+            // fontFamily: 'Trajan Pro',
           ),
         ),
         actions: <Widget>[
@@ -55,8 +56,64 @@ class CurrencyAppScreen extends StatelessWidget {
                   ),
                 ),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xFFAEBEDB),
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(30),
+                          topLeft: Radius.circular(30),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: 40,
+                              // margin: EdgeInsets.only(top: 10),
+                              decoration: BoxDecoration(
+                                  color: Color(0xFF0a3ffe),
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(20),
+                                    topLeft: Radius.circular(30),
+                                  )),
+                              child: Text(
+                                'Round Trip',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontFamily: 'Schyler',
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                // color: Color(0xFFAEBEDB),
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(20),
+                                  topRight: Radius.circular(30),
+                                ),
+                              ),
+                              child: Text(
+                                'One Way',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -90,10 +147,15 @@ class CurrencyAppScreen extends StatelessWidget {
                     // SizedBox(
                     //   height: 30,
                     // ),
-                    Text(
-                      'Choose more flights',
-                      style: TextStyle(
-                        color: Colors.white,
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: 20,
+                      ),
+                      child: Text(
+                        'Choose more flights',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
