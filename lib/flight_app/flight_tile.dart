@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 const double kSizedBoxWidth = 14;
 
-class CurrencyTile extends StatelessWidget {
+class FlightTile extends StatelessWidget {
   final String from;
   final String to;
 
-  CurrencyTile({this.from, this.to});
+  FlightTile({this.from, this.to});
 
   @override
   Widget build(BuildContext context) {

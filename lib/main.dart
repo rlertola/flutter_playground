@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground2/flight_app/flight_app_screen.dart';
 
-import 'currency_app/currency_app_screen.dart';
+import 'flight_app/flight_app_screen.dart';
 import 'screens/home_screen.dart';
 import 'shoe_store/shoe_store_screen.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => HomeScreen(),
-        CurrencyAppScreen.routeName: (context) => CurrencyAppScreen(),
+        FlightAppScreen.routeName: (context) => FlightAppScreen(),
         ShoeStoreScreen.routeName: (context) => ShoeStoreScreen(),
       },
     );

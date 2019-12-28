@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground2/flight_app/flight_app_screen.dart';
 
-import '../../currency_app/currency_app_screen.dart';
 import '../../shoe_store/shoe_store_screen.dart';
 import 'box.dart';
 
@@ -15,7 +15,7 @@ class HomeRow extends StatelessWidget {
           children: <Widget>[
             Box(
               title: 'Currency',
-              route: CurrencyAppScreen.routeName,
+              route: FlightAppScreen.routeName,
             ),
             Box(
               title: 'Shoe Store',
