@@ -19,12 +19,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              HomeRow(),
-            ],
-          ),
+          child: HomeRow(),
         ),
       ),
     );

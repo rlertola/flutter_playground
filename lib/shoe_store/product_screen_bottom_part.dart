@@ -48,7 +48,7 @@ class _ProductScreenBottomPartState extends State<ProductScreenBottomPart> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white10,
+      // color: Colors.white10,
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

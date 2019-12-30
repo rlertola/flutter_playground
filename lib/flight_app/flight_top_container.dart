@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground2/flight_app/constants.dart';
+import 'package:flutter_playground2/flight_app/tab.dart';
 
 class FlightTopContainer extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class _FlightTopContainerState extends State<FlightTopContainer> {
     setState(() {
       _roundTrip = !_roundTrip;
     });
+    print(_roundTrip);
   }
 
   @override
@@ -30,18 +32,57 @@ class _FlightTopContainerState extends State<FlightTopContainer> {
       child: Padding(
         padding: const EdgeInsets.all(30),
         child: Stack(
-          children: <Widget>[
-            // roundTripTab(context),
-            oneWayTab(context),
-            roundTripTab(context),
-          ],
+          children:
+              // _roundTrip
+              //     ? <ContainerTab>[
+              //         ContainerTab(
+              //           topColor: kBrightBlue,
+              //           bottomColor: kLightBlueGrey,
+              //           direction: _roundTrip,
+              //           alignment: CrossAxisAlignment.start,
+              //           changeTab: switchTabs,
+              //         ),
+              //         ContainerTab(
+              //           topColor: kLightBlueGrey,
+              //           bottomColor: kBrightBlue,
+              //           direction: _roundTrip,
+              //           alignment: CrossAxisAlignment.end,
+              //           changeTab: switchTabs,
+              //         ),
+              //       ]
+              //     : <ContainerTab>[
+              //         ContainerTab(
+              //           topColor: kLightBlueGrey,
+              //           bottomColor: kBrightBlue,
+              //           direction: _roundTrip,
+              //           alignment: CrossAxisAlignment.end,
+              //           changeTab: switchTabs,
+              //         ),
+              //         ContainerTab(
+              //           topColor: kBrightBlue,
+              //           bottomColor: kLightBlueGrey,
+              //           direction: _roundTrip,
+              //           alignment: CrossAxisAlignment.start,
+              //           changeTab: switchTabs,
+              //         ),
+              //       ],
+
+              _roundTrip
+                  ? <Widget>[
+                      oneWayTab(context, _roundTrip, switchTabs),
+                      roundTripTab(context, _roundTrip, switchTabs),
+                    ]
+                  : <Widget>[
+                      roundTripTab(context, _roundTrip, switchTabs),
+                      oneWayTab(context, _roundTrip, switchTabs),
+                    ],
         ),
       ),
     );
   }
 }
 
-roundTripTab(context) {
+roundTripTab(context, direction, onTap) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
@@ -50,31 +91,33 @@ roundTripTab(context) {
           // empty container under blue tab
           Container(
             decoration: BoxDecoration(
-              // oneway tab on
-              // color: kBrightBlue,
-              // roundtrip tab on
               color: kLightBlueGrey,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30),
-                // topLeft: Radius.circular(20),
               ),
             ),
             height: 50,
             width: MediaQuery.of(context).size.width / 2 - 30,
           ),
           // roundtrip tab
-          Container(
-            decoration: BoxDecoration(
-              color: kBrightBlue,
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(20),
-                topLeft: Radius.circular(30),
-                // bottomRight off if roundtrip, on if oneway
-                // bottomRight: Radius.circular(20),
+          GestureDetector(
+            onTap: direction ? null : onTap,
+            child: Container(
+              decoration: BoxDecoration(
+                color: kBrightBlue,
+                borderRadius: BorderRadius.only(
+                  topRight:
+                      direction ? Radius.circular(20) : Radius.circular(0),
+                  topLeft: Radius.circular(30),
+
+                  // bottomRight off if roundtrip, on if oneway
+                  bottomRight:
+                      direction ? Radius.circular(0) : Radius.circular(20),
+                ),
               ),
+              height: 50,
+              width: MediaQuery.of(context).size.width / 2 - 30,
             ),
-            height: 50,
-            width: MediaQuery.of(context).size.width / 2 - 30,
           ),
         ],
       ),
@@ -94,7 +137,7 @@ roundTripTab(context) {
   );
 }
 
-oneWayTab(context) {
+oneWayTab(context, direction, onTap) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.end,
     children: <Widget>[
@@ -103,32 +146,32 @@ oneWayTab(context) {
           // empty container under grey tab
           Container(
             decoration: BoxDecoration(
-              // roundtrip tab
               color: kBrightBlue,
-              // oneway tab
-              // color: kLightBlueGrey,
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(30),
-
-                // topLeft: Radius.circular(20),
+                topLeft: direction ? Radius.circular(30) : Radius.circular(0),
               ),
             ),
             height: 50,
             width: MediaQuery.of(context).size.width / 2 - 30,
           ),
-          Container(
-            decoration: BoxDecoration(
-              color: kLightBlueGrey,
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(30),
-                // off if roundtrip, on if oneway
-                // topLeft: Radius.circular(20),
-                // on if roundtrip, off if oneway
-                bottomLeft: Radius.circular(20),
+          GestureDetector(
+            onTap: !direction ? null : onTap,
+            child: Container(
+              decoration: BoxDecoration(
+                color: kLightBlueGrey,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30),
+                  // off if roundtrip, on if oneway
+                  topLeft: direction ? Radius.circular(0) : Radius.circular(20),
+                  // on if roundtrip, off if oneway
+                  bottomLeft:
+                      direction ? Radius.circular(20) : Radius.circular(0),
+                ),
               ),
+              height: 50,
+              width: MediaQuery.of(context).size.width / 2 - 30,
             ),
-            height: 50,
-            width: MediaQuery.of(context).size.width / 2 - 30,
           ),
         ],
       ),

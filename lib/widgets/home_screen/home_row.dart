@@ -14,7 +14,7 @@ class HomeRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Box(
-              title: 'Currency',
+              title: 'Flight Ticket',
               route: FlightAppScreen.routeName,
             ),
             Box(
