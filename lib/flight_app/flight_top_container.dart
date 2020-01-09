@@ -14,7 +14,6 @@ class _FlightTopContainerState extends State<FlightTopContainer> {
     setState(() {
       _roundTrip = !_roundTrip;
     });
-    print(_roundTrip);
   }
 
   @override
