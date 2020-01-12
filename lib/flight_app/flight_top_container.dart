@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground2/flight_app/constants.dart';
-import 'package:flutter_playground2/flight_app/tab.dart';
 
 class FlightTopContainer extends StatefulWidget {
   @override
@@ -31,50 +30,15 @@ class _FlightTopContainerState extends State<FlightTopContainer> {
       child: Padding(
         padding: const EdgeInsets.all(30),
         child: Stack(
-          children:
-              // _roundTrip
-              //     ? <ContainerTab>[
-              //         ContainerTab(
-              //           topColor: kBrightBlue,
-              //           bottomColor: kLightBlueGrey,
-              //           direction: _roundTrip,
-              //           alignment: CrossAxisAlignment.start,
-              //           changeTab: switchTabs,
-              //         ),
-              //         ContainerTab(
-              //           topColor: kLightBlueGrey,
-              //           bottomColor: kBrightBlue,
-              //           direction: _roundTrip,
-              //           alignment: CrossAxisAlignment.end,
-              //           changeTab: switchTabs,
-              //         ),
-              //       ]
-              //     : <ContainerTab>[
-              //         ContainerTab(
-              //           topColor: kLightBlueGrey,
-              //           bottomColor: kBrightBlue,
-              //           direction: _roundTrip,
-              //           alignment: CrossAxisAlignment.end,
-              //           changeTab: switchTabs,
-              //         ),
-              //         ContainerTab(
-              //           topColor: kBrightBlue,
-              //           bottomColor: kLightBlueGrey,
-              //           direction: _roundTrip,
-              //           alignment: CrossAxisAlignment.start,
-              //           changeTab: switchTabs,
-              //         ),
-              //       ],
-
-              _roundTrip
-                  ? <Widget>[
-                      oneWayTab(context, _roundTrip, switchTabs),
-                      roundTripTab(context, _roundTrip, switchTabs),
-                    ]
-                  : <Widget>[
-                      roundTripTab(context, _roundTrip, switchTabs),
-                      oneWayTab(context, _roundTrip, switchTabs),
-                    ],
+          children: _roundTrip
+              ? <Widget>[
+                  oneWayTab(context, _roundTrip, switchTabs),
+                  roundTripTab(context, _roundTrip, switchTabs),
+                ]
+              : <Widget>[
+                  roundTripTab(context, _roundTrip, switchTabs),
+                  oneWayTab(context, _roundTrip, switchTabs),
+                ],
         ),
       ),
     );
@@ -116,6 +80,16 @@ roundTripTab(context, direction, onTap) {
               ),
               height: 50,
               width: MediaQuery.of(context).size.width / 2 - 30,
+              child: Center(
+                child: Text(
+                  'Round Trip',
+                  style: TextStyle(
+                    color: direction ? Colors.white : Colors.white70,
+                    fontSize: 18,
+                    fontFamily: 'Rubik',
+                  ),
+                ),
+              ),
             ),
           ),
         ],
@@ -130,8 +104,9 @@ roundTripTab(context, direction, onTap) {
               bottomRight: Radius.circular(30),
             ),
           ),
+          child: flightContainer(direction),
         ),
-      )
+      ),
     ],
   );
 }
@@ -170,6 +145,16 @@ oneWayTab(context, direction, onTap) {
               ),
               height: 50,
               width: MediaQuery.of(context).size.width / 2 - 30,
+              child: Center(
+                child: Text(
+                  'One Way',
+                  style: TextStyle(
+                    color: !direction ? Colors.black : Colors.black54,
+                    fontSize: 18,
+                    fontFamily: 'Rubik',
+                  ),
+                ),
+              ),
             ),
           ),
         ],
@@ -184,8 +169,59 @@ oneWayTab(context, direction, onTap) {
               bottomRight: Radius.circular(30),
             ),
           ),
+          child: flightContainer(direction),
         ),
       )
+    ],
+  );
+}
+
+Column flightContainer(direction) {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'AMS',
+            style: TextStyle(
+              fontSize: 40,
+              color: direction ? Colors.white : Colors.black,
+              fontFamily: 'Rubik',
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Icon(
+            direction ? Icons.compare_arrows : Icons.arrow_forward,
+            size: 30,
+            color: direction ? Colors.white : Colors.black,
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Text(
+            'SFO',
+            style: TextStyle(
+              fontSize: 40,
+              color: direction ? Colors.white : Colors.black,
+              fontFamily: 'Rubik',
+            ),
+          ),
+        ],
+      ),
+      SizedBox(
+        height: 30,
+      ),
+      Text(
+        'Choose more flights',
+        style: TextStyle(
+          color: direction ? Colors.white : Colors.black,
+          fontFamily: 'Rubik',
+        ),
+      ),
     ],
   );
 }

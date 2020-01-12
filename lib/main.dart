@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground2/flight_app/curved_tab_bar.dart';
 import 'package:flutter_playground2/flight_app/flight_app_screen.dart';
+import 'package:flutter_playground2/path/curved_container.dart';
 
 import 'flight_app/flight_app_screen.dart';
 import 'screens/home_screen.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         FlightAppScreen.routeName: (context) => FlightAppScreen(),
         ShoeStoreScreen.routeName: (context) => ShoeStoreScreen(),
         CurvedTabBar.routeName: (context) => CurvedTabBar(),
+        CurvedContainer.routeName: (context) => CurvedContainer(),
       },
     );
   }

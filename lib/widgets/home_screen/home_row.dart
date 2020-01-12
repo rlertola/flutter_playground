@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground2/flight_app/curved_tab_bar.dart';
 import 'package:flutter_playground2/flight_app/flight_app_screen.dart';
+import 'package:flutter_playground2/path/curved_container.dart';
 
 import '../../shoe_store/shoe_store_screen.dart';
 import 'box.dart';
@@ -28,11 +29,12 @@ class HomeRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Box(
-              title: 'tab',
+              title: 'Tab',
               route: CurvedTabBar.routeName,
             ),
             Box(
-              title: 'Projects',
+              title: 'Curved',
+              route: CurvedContainer.routeName,
             ),
           ],
         ),
