@@ -6,38 +6,39 @@ class CurvedContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          ClipPath(
-            clipper: MyClipper(),
-            child: Container(
-              height: 300,
-              color: Colors.redAccent,
-              child: Center(child: Text('hello')),
-            ),
+      body: Center(
+        child: Container(
+          width: 400,
+          height: 100,
+          color: Colors.redAccent,
+          child: CustomPaint(
+            painter: CurvePainter(),
           ),
-        ],
+        ),
       ),
     );
   }
 }
 
-class MyClipper extends CustomClipper<Path> {
+class CurvePainter extends CustomPainter {
   @override
-  Path getClip(Size size) {
+  void paint(Canvas canvas, Size size) {
+    var paint = Paint();
+    paint.color = Colors.white;
+    paint.style = PaintingStyle.stroke;
+    paint.strokeWidth = 2;
+
     var path = Path();
-    path.lineTo(0, size.height - 90);
-    var controlPoint = Offset(50, size.height);
-    var endPoint = Offset(size.width / 2, size.height);
-    path.quadraticBezierTo(
-        controlPoint.dx, controlPoint.dy, endPoint.dx, endPoint.dy);
-    path.lineTo(size.width, size.height);
-    path.lineTo(size.width, 0);
-    return path;
+    path.moveTo(size.width * .5, 0);
+    path.lineTo(size.width * .5, size.height);
+    // path.quadraticBezierTo(size.height * .25, size.height, size.width * .55, 0);
+
+    canvas.drawPath(path, paint);
   }
 
   @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    // TODO: implement shouldRepaint
     return true;
   }
 }

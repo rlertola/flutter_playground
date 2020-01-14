@@ -96,16 +96,7 @@ roundTripTab(context, direction, onTap) {
       ),
       // Big blue container under row
       Expanded(
-        child: Container(
-          decoration: BoxDecoration(
-            color: kBrightBlue,
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(30),
-              bottomRight: Radius.circular(30),
-            ),
-          ),
-          child: flightContainer(direction),
-        ),
+        child: flightContainer(direction),
       ),
     ],
   );
@@ -161,67 +152,67 @@ oneWayTab(context, direction, onTap) {
       ),
       // Big grey container under row
       Expanded(
-        child: Container(
-          decoration: BoxDecoration(
-            color: kLightBlueGrey,
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(30),
-              bottomRight: Radius.circular(30),
-            ),
-          ),
-          child: flightContainer(direction),
-        ),
-      )
+        child: flightContainer(direction),
+      ),
     ],
   );
 }
 
-Column flightContainer(direction) {
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: <Widget>[
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            'AMS',
-            style: TextStyle(
-              fontSize: 40,
-              color: direction ? Colors.white : Colors.black,
-              fontFamily: 'Rubik',
-            ),
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          Icon(
-            direction ? Icons.compare_arrows : Icons.arrow_forward,
-            size: 30,
-            color: direction ? Colors.white : Colors.black,
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          Text(
-            'SFO',
-            style: TextStyle(
-              fontSize: 40,
-              color: direction ? Colors.white : Colors.black,
-              fontFamily: 'Rubik',
-            ),
-          ),
-        ],
+Container flightContainer(direction) {
+  return Container(
+    decoration: BoxDecoration(
+      color: direction ? kBrightBlue : kLightBlueGrey,
+      borderRadius: BorderRadius.only(
+        bottomLeft: Radius.circular(30),
+        bottomRight: Radius.circular(30),
       ),
-      SizedBox(
-        height: 30,
-      ),
-      Text(
-        'Choose more flights',
-        style: TextStyle(
-          color: direction ? Colors.white : Colors.black,
-          fontFamily: 'Rubik',
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'AMS',
+              style: TextStyle(
+                fontSize: 40,
+                color: direction ? Colors.white : Colors.black,
+                fontFamily: 'Rubik',
+              ),
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Icon(
+              direction ? Icons.compare_arrows : Icons.arrow_forward,
+              size: 30,
+              color: direction ? Colors.white : Colors.black,
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Text(
+              'SFO',
+              style: TextStyle(
+                fontSize: 40,
+                color: direction ? Colors.white : Colors.black,
+                fontFamily: 'Rubik',
+              ),
+            ),
+          ],
         ),
-      ),
-    ],
+        SizedBox(
+          height: 30,
+        ),
+        Text(
+          'Choose more flights',
+          style: TextStyle(
+            color: direction ? Colors.white : Colors.black,
+            fontFamily: 'Rubik',
+          ),
+        ),
+      ],
+    ),
   );
 }
