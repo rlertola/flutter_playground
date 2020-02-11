@@ -9,7 +9,7 @@ class CurvedContainer extends StatelessWidget {
       body: Center(
         child: Container(
           width: 400,
-          height: 100,
+          height: 400,
           color: Colors.redAccent,
           child: CustomPaint(
             painter: CurvePainter(),
