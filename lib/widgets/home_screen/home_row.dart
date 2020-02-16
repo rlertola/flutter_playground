@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground2/box_menu/rotated_menu.dart';
 import 'package:flutter_playground2/circle/circle_button.dart';
 import 'package:flutter_playground2/flight_app/curved_tab_bar.dart';
 import 'package:flutter_playground2/flight_app/flight_app_screen.dart';
@@ -43,8 +44,8 @@ class HomeRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Box(
-              title: 'Projects',
-              // route: CurrencyAppScreen.routeName,
+              title: 'Menu',
+              route: RotatedMenu.routeName,
             ),
             Box(
               title: 'Projects',

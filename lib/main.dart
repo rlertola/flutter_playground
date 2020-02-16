@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground2/box_menu/rotated_menu.dart';
 import 'package:flutter_playground2/circle/circle_button.dart';
 import 'package:flutter_playground2/flight_app/curved_tab_bar.dart';
 import 'package:flutter_playground2/flight_app/flight_app_screen.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         ShoeStoreScreen.routeName: (context) => ShoeStoreScreen(),
         CircleButton.routeName: (context) => CircleButton(),
         CurvedContainer.routeName: (context) => CurvedContainer(),
+        RotatedMenu.routeName: (context) => RotatedMenu(),
       },
     );
   }
